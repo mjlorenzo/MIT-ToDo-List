@@ -25,15 +25,11 @@ function App() {
     setTodos([...todos, {
       text,
       isCompleted: false
-    }]);
+    }])
   }
 
   // define a function 'removeTodo' to remove a todo that has been clicked on
-  const removeTodo = e => {
-    // retrieve the id attribute of the clicked on todo
-    let index = e.currentTarget.id;
-    // if there wasn't one, ignore and return
-    if (!index) return;
+  const removeTodo = index => {
     // make a copy of the state variable
     // modifying the state variable in place will not work as intended
     let tempTodos = [...todos];
@@ -47,11 +43,8 @@ function App() {
     // start with a fragment as a container
     <>
       {/* create a series of <div>'s, one for each todo */}
-      {todos.map((todo, i) =>
-        <div key={i} id={i} className="card" onClick={removeTodo}>
-          <div className="card-body">{todo.text}</div>
-        </div>)}
-        <TodoForm addTodo={addTodo} />
+      {todos.map((todo, i) => <Todo todo={todo} index={i} removeTodo={removeTodo} />)}
+      <TodoForm addTodo={addTodo} />
     </>
   );
 }
