@@ -43,7 +43,7 @@ function App() {
     // start with a fragment as a container
     <>
       {/* create a series of <div>'s, one for each todo */}
-      {todos.map((todo, i) => <Todo todo={todo} index={i} removeTodo={removeTodo} />)}
+      {todos.map((todo, i) => <Todo key={i} todo={todo} index={i} removeTodo={removeTodo} />)}
       <TodoForm addTodo={addTodo} />
     </>
   );
